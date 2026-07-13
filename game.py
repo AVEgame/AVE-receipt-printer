@@ -1,22 +1,21 @@
 import hid
 
 buttons = [
-    ["SQUARE",   "SQUARE  ", lambda x: x[5] & 8 > 0],
-    ["X",        "X       ", lambda x: x[5] & 4 > 0],
-    ["CIRCLE",   "CIRCLE  ", lambda x: x[5] & 2 > 0],
+    ["SQUARE", "SQUARE  ", lambda x: x[5] & 8 > 0],
+    ["X", "X       ", lambda x: x[5] & 4 > 0],
+    ["CIRCLE", "CIRCLE  ", lambda x: x[5] & 2 > 0],
     ["TRIANGLE", "TRIANGLE", lambda x: x[5] & 1 > 0],
-    ["LEFT",     "LEFT    ", lambda x: x[0] == 0],
-    ["RIGHT",    "RIGHT   ", lambda x: x[0] == 255],
-    ["UP",       "UP      ", lambda x: x[1] == 0],
-    ["DOWN",     "DOWN    ", lambda x: x[1] == 255],
-    ["L1",       "L1      ", lambda x: x[5] & 64 > 0],
-    ["L2",       "L2      ", lambda x: x[5] & 16 > 0],
-    ["R1",       "R1      ", lambda x: x[5] & 128 > 0],
-    ["R2",       "R2      ", lambda x: x[5] & 32 > 0],
-    ["START",    "START   ", lambda x: x[6] & 8 > 0],
-    ["SELECT",   "SELECT  ", lambda x: x[6] & 1 > 0],
+    ["LEFT", "LEFT    ", lambda x: x[0] == 0],
+    ["RIGHT", "RIGHT   ", lambda x: x[0] == 255],
+    ["UP", "UP      ", lambda x: x[1] == 0],
+    ["DOWN", "DOWN    ", lambda x: x[1] == 255],
+    ["L1", "L1      ", lambda x: x[5] & 64 > 0],
+    ["L2", "L2      ", lambda x: x[5] & 16 > 0],
+    ["R1", "R1      ", lambda x: x[5] & 128 > 0],
+    ["R2", "R2      ", lambda x: x[5] & 32 > 0],
+    ["START", "START   ", lambda x: x[6] & 8 > 0],
+    ["SELECT", "SELECT  ", lambda x: x[6] & 1 > 0],
 ]
-
 
 
 class Game:
@@ -113,6 +112,7 @@ def parse_conditions(text, id="item"):
                 raise NotImplementedError(f"Unsupported operator: {op}")
     return out
 
+
 def parse_game(file):
     game = Game()
     state = None
@@ -148,7 +148,9 @@ def parse_game(file):
         elif " => " in line:
             assert state == "ROOM"
             text, next = line.split(" => ")
-            current["options"].append({"text": text, **parse_conditions(next, "target")})
+            current["options"].append(
+                {"text": text, **parse_conditions(next, "target")}
+            )
         elif line.startswith("% "):
             game.add(state, current_id, current)
             state = "ITEM"
@@ -167,18 +169,23 @@ def parse_game(file):
 
 class Gamepad:
     def __init__(self):
-        self.buttons = [i for i in buttons if i[0] in [
-            "SQUARE",
-            "X",
-            "CIRCLE",
-            "TRIANGLE",
-            "L1",
-            "L2",
-            "R1",
-            "R2",
-        ]]
+        self.buttons = [
+            i
+            for i in buttons
+            if i[0]
+            in [
+                "SQUARE",
+                "X",
+                "CIRCLE",
+                "TRIANGLE",
+                "L1",
+                "L2",
+                "R1",
+                "R2",
+            ]
+        ]
 
-        self.pad = hid.Device(0x12bd, 0xe002)
+        self.pad = hid.Device(0x12BD, 0xE002)
 
     def get_status(self):
         while True:
@@ -206,6 +213,6 @@ class Printer:
         print()
 
     def cut(self):
-        print("-- "*10)
+        print("-- " * 10)
         print()
         print()

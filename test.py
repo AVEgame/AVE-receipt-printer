@@ -22,4 +22,7 @@ def test_kettle_room():
 
     game.inventory.append("kettleplug")
 
-    assert game.room_text() == "The kettle explodes in a shower of sparks. How could you forget that your kettle is broken? That's why you left it unplugged. The sparks prove fatal."
+    assert (
+        game.room_text()
+        == "The kettle explodes in a shower of sparks. How could you forget that your kettle is broken? That's why you left it unplugged. The sparks prove fatal."
+    )

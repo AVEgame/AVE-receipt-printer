@@ -13,18 +13,23 @@ while True:
             printer.print_text("GAME OVER")
             printer.print_newline()
             printer.print_newline()
-            printer.print_text("-- "*10)
+            printer.print_text("-- " * 10)
             break
 
         printer.print_text(game.room_text())
         printer.print_newline()
-        for b, o in zip(buttons, game.options_text()):
+        for b, o in zip(gamepad.buttons, game.options_text()):
             printer.print_text(f"{b[1]} {o}")
         printer.print_newline()
         printer.print_newline()
 
-        targets = {button[0]: target for button, target in zip(buttons, game.options_targets())}
-        options = {button[0]: target for button, target in zip(buttons, game.options())}
+        targets = {
+            button[0]: target
+            for button, target in zip(gamepad.buttons, game.options_targets())
+        }
+        options = {
+            button[0]: target for button, target in zip(gamepad.buttons, game.options())
+        }
         while True:
             button = gamepad.get_button_pressed()
             if button in targets:
