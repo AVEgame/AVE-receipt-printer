@@ -12,7 +12,7 @@ while True:
     printer.print_newline()
     printer.print_text(game.title)
     printer.print_newline()
-    printer.print_text(f"Written by {game.author}")
+    printer.print_text(f"Written by {game.authors}")
     printer.print_newline()
     printer.print_text(" ~ ".join(["AVE"] * 5))
     printer.print_newline()
