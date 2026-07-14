@@ -42,6 +42,10 @@ while True:
         printer.print_newline()
         printer.print_newline()
         printer.print_newline()
+        printer.print_newline()
+        printer.print_newline()
+        printer.print_newline()
+        printer.print_newline()
 
         targets = {
             button[0]: target
