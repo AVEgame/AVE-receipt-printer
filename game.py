@@ -208,7 +208,7 @@ class Printer:
         self.printer = Usb(0x0483, 0x5743)
 
     def print_text(self, text):
-        self.printer.text("Hello World\n")
+        self.printer.text(text)
 
     def print_newline(self):
         self.printer.text("\n")
