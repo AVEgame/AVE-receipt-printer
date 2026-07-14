@@ -1,4 +1,5 @@
 import hid
+from escpos.printer import Usb
 
 buttons = [
     ["SQUARE", "SQUARE  ", lambda x: x[5] & 8 > 0],
@@ -204,15 +205,13 @@ class Gamepad:
 
 class Printer:
     def __init__(self):
-        pass
+        self.printer = Usb(0x0483, 0x5743)
 
     def print_text(self, text):
-        print(text)
+        self.printer.text("Hello World\n")
 
     def print_newline(self):
-        print()
+        self.printer.text("\n")
 
     def cut(self):
-        print("-- " * 10)
-        print()
-        print()
+        self.printer.cut()
