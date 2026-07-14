@@ -8,13 +8,13 @@ printer = Printer()
 
 while True:
     game.reset()
-    print(" ~ ".join(["AVE"] * 5))
+    printer.print_text(" ~ ".join(["AVE"] * 5))
     printer.print_newline()
-    printer.print(game.title)
+    printer.print_text(game.title)
     printer.print_newline()
-    printer.print(f"Written by {game.author}")
+    printer.print_text(f"Written by {game.author}")
     printer.print_newline()
-    print(" ~ ".join(["AVE"] * 5))
+    printer.print_text(" ~ ".join(["AVE"] * 5))
     printer.print_newline()
     printer.print_newline()
     while True:
