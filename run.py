@@ -6,15 +6,16 @@ with open("tea.ave") as f:
 gamepad = Gamepad()
 printer = Printer()
 
+
 while True:
     game.reset()
-    printer.print_text(" ~ ".join(["AVE"] * 5))
+    printer.print_text(" ~ ".join(["AVE"] * 9))
     printer.print_newline()
     printer.print_text(game.title)
     printer.print_newline()
     printer.print_text(f"Written by {game.authors}")
     printer.print_newline()
-    printer.print_text(" ~ ".join(["AVE"] * 5))
+    printer.print_text(" ~ ".join(["AVE"] * 9))
     printer.print_newline()
     printer.print_newline()
     while True:
@@ -24,8 +25,8 @@ while True:
             printer.print_newline()
             printer.cut()
             break
-        if game.room_id == "__GAMEOVER__":
-            printer.print_text("GAME OVER")
+        if game.room_id == "__WINNER__":
+            printer.print_text("YOU WIN")
             printer.print_newline()
             printer.print_newline()
             printer.cut()
@@ -35,6 +36,10 @@ while True:
         printer.print_newline()
         for b, o in zip(gamepad.buttons, game.options_text()):
             printer.print_text(f"{b[1]} {o}")
+            printer.print_newline()
+        printer.print_newline()
+        printer.print_newline()
+        printer.print_newline()
         printer.print_newline()
         printer.print_newline()
 
