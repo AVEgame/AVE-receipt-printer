@@ -6,16 +6,17 @@ with open("tea.ave") as f:
 gamepad = Gamepad()
 printer = Printer()
 
+printer.cut()
 
 while True:
     game.reset()
-    printer.print_text(" ~ ".join(["AVE"] * 9))
+    printer.print_text(" ~ ".join(["AVE"] * 8))
     printer.print_newline()
     printer.print_text(game.title)
     printer.print_newline()
     printer.print_text(f"Written by {game.authors}")
     printer.print_newline()
-    printer.print_text(" ~ ".join(["AVE"] * 9))
+    printer.print_text(" ~ ".join(["AVE"] * 8))
     printer.print_newline()
     printer.print_newline()
     while True:
