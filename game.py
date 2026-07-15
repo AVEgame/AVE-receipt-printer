@@ -216,7 +216,9 @@ class Printer:
             else:
                 if i > 0:
                     self.printer.text(" ")
+                    self.x += 1
                 self.printer.text(word)
+                self.x += len(word)
 
     def print_newline(self):
         self.printer.text("\n")
