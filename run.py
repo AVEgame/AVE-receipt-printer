@@ -35,6 +35,7 @@ while True:
 
         printer.print_text(game.room_text())
         printer.print_newline()
+        printer.print_newline()
         for b, o in zip(gamepad.buttons, game.options_text()):
             printer.print_text(f"{b[1]} {o}")
             printer.print_newline()
