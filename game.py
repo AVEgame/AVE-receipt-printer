@@ -18,10 +18,7 @@ buttons = [
     ["SELECT", "SELECT  ", lambda x: x[6] & 1 > 0],
 ]
 
-buttons = [
-    [b[0], (b[1] + " "*3)[:3] + " ", b[2], b[3]]
-    for b in buttons
-]
+buttons = [[b[0], (b[1] + " " * 3)[:3] + " ", b[2], b[3]] for b in buttons]
 
 
 class Game:
