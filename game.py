@@ -4,8 +4,8 @@ from escpos.printer import Usb
 buttons = [
     ["X", "X", lambda x: x[5] & 4 > 0],
     ["CIRCLE", "O", lambda x: x[5] & 2 > 0],
-    ["SQUARE", "SQU", lambda x: x[5] & 8 > 0],
-    ["TRIANGLE", "TRI", lambda x: x[5] & 1 > 0],
+    ["SQUARE", "SQ", lambda x: x[5] & 8 > 0],
+    ["TRIANGLE", "TR", lambda x: x[5] & 1 > 0],
     ["LEFT", "<", lambda x: x[0] == 0],
     ["RIGHT", ">", lambda x: x[0] == 255],
     ["UP", "^", lambda x: x[1] == 0],
@@ -18,7 +18,7 @@ buttons = [
     ["SELECT", "SELECT  ", lambda x: x[6] & 1 > 0],
 ]
 
-buttons = [[b[0], (b[1] + " " * 3)[:3] + " ", b[2]] for b in buttons]
+buttons = [[b[0], (b[1] + " " * 2)[:2] + " ", b[2]] for b in buttons]
 
 
 class Game:
@@ -212,15 +212,13 @@ class Printer:
 
     def print_text(self, text):
         for i, word in enumerate(text.split(" ")):
-            if self.x + len(word) >= 45:
+            if self.x + len(word) >= 48:
                 self.print_newline()
-                self.printer.text(word)
-            else:
-                if i > 0:
-                    self.printer.text(" ")
-                    self.x += 1
-                self.printer.text(word)
-                self.x += len(word)
+            elif i > 0:
+                self.printer.text(" ")
+                self.x += 1
+            self.printer.text(word)
+            self.x += len(word)
 
     def print_newline(self):
         self.printer.text("\n")
