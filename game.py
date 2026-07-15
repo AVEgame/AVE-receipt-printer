@@ -206,12 +206,22 @@ class Gamepad:
 class Printer:
     def __init__(self):
         self.printer = Usb(0x0483, 0x5743)
+        self.x = 0
 
     def print_text(self, text):
-        self.printer.text(text)
+        for i, word in enumerate(text.split(" ")):
+            if self.x + len(word) > 48:
+                self.print_newline()
+                self.printer.text(word)
+            else:
+                if i > 0:
+                    self.printer.text(" ")
+                self.printer.text(word)
 
     def print_newline(self):
         self.printer.text("\n")
+        self.x = 0
 
     def cut(self):
         self.printer.cut()
+        self.x = 0
