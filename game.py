@@ -2,20 +2,25 @@ import hid
 from escpos.printer import Usb
 
 buttons = [
-    ["SQUARE", "SQUARE  ", lambda x: x[5] & 8 > 0],
-    ["X", "X       ", lambda x: x[5] & 4 > 0],
-    ["CIRCLE", "CIRCLE  ", lambda x: x[5] & 2 > 0],
-    ["TRIANGLE", "TRIANGLE", lambda x: x[5] & 1 > 0],
-    ["LEFT", "LEFT    ", lambda x: x[0] == 0],
-    ["RIGHT", "RIGHT   ", lambda x: x[0] == 255],
-    ["UP", "UP      ", lambda x: x[1] == 0],
-    ["DOWN", "DOWN    ", lambda x: x[1] == 255],
-    ["L1", "L1      ", lambda x: x[5] & 64 > 0],
-    ["L2", "L2      ", lambda x: x[5] & 16 > 0],
-    ["R1", "R1      ", lambda x: x[5] & 128 > 0],
-    ["R2", "R2      ", lambda x: x[5] & 32 > 0],
+    ["SQUARE", "[]", lambda x: x[5] & 8 > 0],
+    ["X", "X", lambda x: x[5] & 4 > 0],
+    ["CIRCLE", "O", lambda x: x[5] & 2 > 0],
+    ["TRIANGLE", "/_\\", lambda x: x[5] & 1 > 0],
+    ["LEFT", "<", lambda x: x[0] == 0],
+    ["RIGHT", ">", lambda x: x[0] == 255],
+    ["UP", "^", lambda x: x[1] == 0],
+    ["DOWN", "v", lambda x: x[1] == 255],
+    ["L1", "L1", lambda x: x[5] & 64 > 0],
+    ["L2", "L2", lambda x: x[5] & 16 > 0],
+    ["R1", "R1", lambda x: x[5] & 128 > 0],
+    ["R2", "R2", lambda x: x[5] & 32 > 0],
     ["START", "START   ", lambda x: x[6] & 8 > 0],
     ["SELECT", "SELECT  ", lambda x: x[6] & 1 > 0],
+]
+
+buttons = [
+    [b[0], (b[1] + " "*3)[:3] + " ", b[2], b[3]]
+    for b in buttons
 ]
 
 
