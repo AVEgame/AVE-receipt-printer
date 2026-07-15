@@ -2,10 +2,10 @@ import hid
 from escpos.printer import Usb
 
 buttons = [
-    ["SQUARE", "[]", lambda x: x[5] & 8 > 0],
     ["X", "X", lambda x: x[5] & 4 > 0],
     ["CIRCLE", "O", lambda x: x[5] & 2 > 0],
-    ["TRIANGLE", "/_\\", lambda x: x[5] & 1 > 0],
+    ["SQUARE", "SQU", lambda x: x[5] & 8 > 0],
+    ["TRIANGLE", "TRI", lambda x: x[5] & 1 > 0],
     ["LEFT", "<", lambda x: x[0] == 0],
     ["RIGHT", ">", lambda x: x[0] == 255],
     ["UP", "^", lambda x: x[1] == 0],
