@@ -210,7 +210,7 @@ class Printer:
 
     def print_text(self, text):
         for i, word in enumerate(text.split(" ")):
-            if self.x + len(word) + 1 >= 48:
+            if self.x + len(word) >= 46:
                 self.print_newline()
                 self.printer.text(word)
             else:
